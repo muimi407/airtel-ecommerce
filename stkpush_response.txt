@@ -1,10 +1,14 @@
 {
-                    "requestId":"4585-4594-839f-309948e2163113702",
-                    "errorCode": "500.001.1001",
-                    "errorMessage": "Merchant does not exist"
-                }
-            {
-    "requestId": "4585-4594-839f-309948e2163113702",
-    "errorCode": "500.001.1001",
-    "errorMessage": "Merchant does not exist"
+            "MerchantRequestID":"6ea8-4720-b19f-46a7bc44753e13256",
+            "CheckoutRequestID":"ws_CO_18072025020827064722000000",
+            "ResponseCode": "0",
+            "ResponseDescription":"Success. Request accepted for processing",
+            "CustomerMessage":"Success. Request accepted for processing"
+        }
+        {
+    "MerchantRequestID": "6ea8-4720-b19f-46a7bc44753e13256",
+    "CheckoutRequestID": "ws_CO_18072025020827064722000000",
+    "ResponseCode": "0",
+    "ResponseDescription": "Success. Request accepted for processing",
+    "CustomerMessage": "Success. Request accepted for processing"
 }
