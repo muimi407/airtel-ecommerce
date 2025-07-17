@@ -63,10 +63,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute([$_SESSION['user_id']]);
             
             $db->commit();
-            
-            // Redirect to order confirmation
-            redirect('order-confirmation.php?order=' . $order_id);
-            
+
+            // ---- MPESA PAYMENT LOGIC BLOCK ADDED BELOW ----
+            if ($payment_method === 'mpesa') {
+                require_once 'mpesa_stkpush.php';
+                $mpesaResponse = initiateStkPush($phone, $total, $order_id, $_SESSION['user_id']);
+                redirect('mpesa-status.php?order=' . $order_id);
+            } else {
+                redirect('order-confirmation.php?order=' . $order_id);
+            }
+            // ---- END MPESA BLOCK ----
+
         } catch (Exception $e) {
             $db->rollBack();
             $error = 'Order processing failed. Please try again.';
