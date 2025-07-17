@@ -24,6 +24,9 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
     $result = json_decode($response);
     $accessToken = $result->access_token;
 
+    // DEBUG: Write the access token to a file
+    file_put_contents('access_token.txt', $accessToken);
+
     // Prepare STK push payload
     $timestamp = date('YmdHis');
     $password = base64_encode($shortCode . $passkey . $timestamp);
@@ -50,6 +53,9 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
     $response = curl_exec($ch);
     curl_close($ch);
+
+    // DEBUG: Write the STK Push API response to a file
+    file_put_contents('stkpush_response.txt', $response);
 
     return json_decode($response);
 }
