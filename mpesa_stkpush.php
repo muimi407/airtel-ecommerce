@@ -6,7 +6,7 @@ $consumerKey = 'gisjp144n25uNeSIkZOymh0A64meBZt2mdY92lfU5FAmUpXw';
 $consumerSecret = 'GLK4zXDWtjByFnv1Dgt2tK0AwnsD9Uw3WL5iHeEWdrRvJHCOfTJnOuNzZBuV5fVY';
 $shortCode = '174379'; // <--- REVERTED to the standard sandbox short code
 $passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-$phone = '254722000000'; // Sandbox test phone
+$phone = '254708374149'; // Sandbox test phone
 $callbackUrl = 'https://551c0c008a5a.ngrok-free.app/airtel-ecommerce/mpesa_callback.php'; // Public for Safaricom
 
 function initiateStkPush($phone, $amount, $orderId, $userId) {
@@ -55,19 +55,18 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
   $password = base64_encode($shortCode . $passkey . $timestamp);
 
   $payload = [
-      'BusinessShortCode' => $shortCode,
-      'Password' => $password,
-      'Timestamp' => $timestamp,
-      'TransactionType' => 'CustomerPayBillOnline',
-      'Amount' => $amount,
-      'PartyA' => $phone,
-      'PartyB' => $shortCode,
-      'PhoneNumber' => $phone,
-      'CallBackURL' => $callbackUrl,
-      'AccountReference' => 'ORDER-' . $orderId,
-      'TransactionDesc' => 'Order Payment'
-  ];
-
+    'BusinessShortCode' => $shortCode,
+    'Password' => $password,
+    'Timestamp' => $timestamp,
+    'TransactionType' => 'CustomerPayBillOnline',
+    'Amount' => $amount,
+    'PartyA' => $phone,           // Should be 254708374149 in sandbox
+    'PartyB' => $shortCode,
+    'PhoneNumber' => $phone,      // Should be 254708374149 in sandbox
+    'CallBackURL' => $callbackUrl,
+    'AccountReference' => 'ORDER-' . $orderId,
+    'TransactionDesc' => 'Order Payment'
+];
   // DEBUG: Log the actual payload being sent
   file_put_contents('payload_debug.txt', json_encode($payload, JSON_PRETTY_PRINT));
 

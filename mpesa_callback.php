@@ -1,10 +1,10 @@
 <?php
 require_once 'config/config.php';
 
-// 1. Log all incoming POST data for debugging
+// Log all incoming POST data for debugging
 file_put_contents('mpesa_callback_log.txt', file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
 
-// 2. Parse and validate incoming data
+// Parse and validate incoming data
 $data = file_get_contents('php://input');
 $mpesaResponse = json_decode($data, true);
 
