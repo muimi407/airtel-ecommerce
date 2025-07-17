@@ -5,7 +5,7 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
    $consumerKey = 'gisjp144n25uNeSIkZOymh0A64meBZt2mdY92lfU5FAmUpXw';
 $consumerSecret = 'GLK4zXDWtjByFnv1Dgt2tK0AwnsD9Uw3WL5iHeEWdrRvJHCOfTJnOuNzZBuV5fVY';
 $shortCode = '174379';
-$passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2c2c09e6f7bc8d6a49b7b0f2f0b0c4e5';
+$passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
 $phone = '254722000000'; // Sandbox test phone
 $callbackUrl = 'https://551c0c008a5a.ngrok-free.app/airtel-ecommerce/mpesa_callback.php'; // Public for Safaricom
 
