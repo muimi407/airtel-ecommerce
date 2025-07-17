@@ -64,10 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             $db->commit();
 
-            // ---- MPESA PAYMENT LOGIC BLOCK ADDED BELOW ----
+            // ---- MPESA PAYMENT LOGIC BLOCK (Updated) ----
             if ($payment_method === 'mpesa') {
                 require_once 'mpesa_stkpush.php';
                 $mpesaResponse = initiateStkPush($phone, $total, $order_id, $_SESSION['user_id']);
+                file_put_contents('stkpush_response.txt', json_encode($mpesaResponse, JSON_PRETTY_PRINT), FILE_APPEND);
                 redirect('mpesa-status.php?order=' . $order_id);
             } else {
                 redirect('order-confirmation.php?order=' . $order_id);
@@ -279,3 +280,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </body>
 </html>
+
