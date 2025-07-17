@@ -2,11 +2,12 @@
 require_once 'config/config.php';
 
 function initiateStkPush($phone, $amount, $orderId, $userId) {
-    $consumerKey = 'zKpbstN0hcqmoeT78KymgdXUdwTSltm6F3m4s6WeyWTVz4JM';
-    $consumerSecret = 'SERyxYiTayVuIZidtynSuD9M6gufiYWjGXK9hYQcPbxPmrOmRWxzkmGX0CrJTC9p';
-    $shortCode = '174379'; // Sandbox default
-    $passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2c2c09e6f7bc8d6a49b7b0f2f0b0c4e5'; // Sandbox default
-    $callbackUrl = 'https://551c0c008a5a.ngrok-free.app/airtel-ecommerce/mpesa_callback.php'; // Public for Safaricom
+   $consumerKey = 'gisjp144n25uNeSIkZOymh0A64meBZt2mdY92lfU5FAmUpXw';
+$consumerSecret = 'GLK4zXDWtjByFnv1Dgt2tK0AwnsD9Uw3WL5iHeEWdrRvJHCOfTJnOuNzZBuV5fVY';
+$shortCode = '174379';
+$passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2c2c09e6f7bc8d6a49b7b0f2f0b0c4e5';
+$phone = '254722000000'; // Sandbox test phone
+$callbackUrl = 'https://551c0c008a5a.ngrok-free.app/airtel-ecommerce/mpesa_callback.php'; // Public for Safaricom
 
     // Save pending payment in DB
     $db = $GLOBALS['db'];
@@ -38,17 +39,17 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
     $password = base64_encode($shortCode . $passkey . $timestamp);
 
     $payload = [
-        'BusinessShortCode' => $shortCode,
-        'Password' => $password,
-        'Timestamp' => $timestamp,
-        'TransactionType' => 'CustomerPayBillOnline',
-        'Amount' => $amount,
-        'PartyA' => $phone,
-        'PartyB' => $shortCode,
-        'PhoneNumber' => $phone,
-        'CallBackURL' => $callbackUrl,
-        'AccountReference' => 'ORDER-' . $orderId,
-        'TransactionDesc' => 'Order Payment'
+    'BusinessShortCode' => $shortCode,
+    'Password' => $password,
+    'Timestamp' => $timestamp,
+    'TransactionType' => 'CustomerPayBillOnline',
+    'Amount' => $amount,
+    'PartyA' => $phone,
+    'PartyB' => $shortCode,
+    'PhoneNumber' => $phone,
+    'CallBackURL' => $callbackUrl,
+    'AccountReference' => 'ORDER-' . $orderId,
+    'TransactionDesc' => 'Order Payment'
     ];
 
     // DEBUG: Log the actual payload being sent
