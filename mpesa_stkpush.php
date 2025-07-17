@@ -27,22 +27,32 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
     // DEBUG: Write the access token to a file
     file_put_contents('access_token.txt', $accessToken);
 
-    // Prepare STK push payload
+    // Prepare STK push payload (from your provided payload block)
+    $shortCode = '174379';
+    $passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2c2c09e6f7bc8d6a49b7b0f2f0b0c4e5';
     $timestamp = date('YmdHis');
+
+    // DEBUG: Log the password string BEFORE base64 encoding
+    file_put_contents('password_debug.txt', $shortCode . $passkey . $timestamp);
+
     $password = base64_encode($shortCode . $passkey . $timestamp);
+
     $payload = [
-    'BusinessShortCode' => $shortCode, // '174379'
-    'Password' => $password,
-    'Timestamp' => $timestamp,
-    'TransactionType' => 'CustomerPayBillOnline',
-    'Amount' => $amount,
-    'PartyA' => $phone,                // '254722000000'
-    'PartyB' => $shortCode,            // '174379'
-    'PhoneNumber' => $phone,           // '254722000000'
-    'CallBackURL' => $callbackUrl,
-    'AccountReference' => 'ORDER-' . $orderId, // Always a string!
-    'TransactionDesc' => 'Order Payment'
-];
+        'BusinessShortCode' => $shortCode,
+        'Password' => $password,
+        'Timestamp' => $timestamp,
+        'TransactionType' => 'CustomerPayBillOnline',
+        'Amount' => $amount,
+        'PartyA' => $phone,
+        'PartyB' => $shortCode,
+        'PhoneNumber' => $phone,
+        'CallBackURL' => $callbackUrl,
+        'AccountReference' => 'ORDER-' . $orderId,
+        'TransactionDesc' => 'Order Payment'
+    ];
+
+    // DEBUG: Log the actual payload being sent
+    file_put_contents('payload_debug.txt', json_encode($payload, JSON_PRETTY_PRINT));
 
     $stkUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
     $headers = ['Content-Type: application/json', 'Authorization: Bearer ' . $accessToken];
