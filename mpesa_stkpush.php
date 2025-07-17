@@ -31,18 +31,18 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
     $timestamp = date('YmdHis');
     $password = base64_encode($shortCode . $passkey . $timestamp);
     $payload = [
-        'BusinessShortCode' => $shortCode,
-        'Password' => $password,
-        'Timestamp' => $timestamp,
-        'TransactionType' => 'CustomerPayBillOnline',
-        'Amount' => $amount,
-        'PartyA' => $phone,
-        'PartyB' => $shortCode,
-        'PhoneNumber' => $phone,
-        'CallBackURL' => $callbackUrl,
-        'AccountReference' => $orderId,
-        'TransactionDesc' => 'Order Payment'
-    ];
+    'BusinessShortCode' => $shortCode, // '174379'
+    'Password' => $password,
+    'Timestamp' => $timestamp,
+    'TransactionType' => 'CustomerPayBillOnline',
+    'Amount' => $amount,
+    'PartyA' => $phone,                // '254722000000'
+    'PartyB' => $shortCode,            // '174379'
+    'PhoneNumber' => $phone,           // '254722000000'
+    'CallBackURL' => $callbackUrl,
+    'AccountReference' => 'ORDER-' . $orderId, // Always a string!
+    'TransactionDesc' => 'Order Payment'
+];
 
     $stkUrl = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
     $headers = ['Content-Type: application/json', 'Authorization: Bearer ' . $accessToken];
