@@ -1,11 +1,11 @@
 <?php
 require_once 'config/config.php';
 
-// Global credentials (already defined in your original file)
+// Global credentials
 $consumerKey = 'gisjp144n25uNeSIkZOymh0A64meBZt2mdY92lfU5FAmUpXw';
 $consumerSecret = 'GLK4zXDWtjByFnv1Dgt2tK0AwnsD9Uw3WL5iHeEWdrRvJHCOfTJnOuNzZBuV5fVY';
-$shortCode = '174379';
-$passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'; // Replace this line with your actual Passkey from the Daraja portal
+$shortCode = '600584'; // <--- CHANGE THIS to match the Business Short Code where your URLs are registered
+$passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
 $phone = '254722000000'; // Sandbox test phone
 $callbackUrl = 'https://551c0c008a5a.ngrok-free.app/airtel-ecommerce/mpesa_callback.php'; // Public for Safaricom
 
@@ -95,5 +95,6 @@ function initiateStkPush($phone, $amount, $orderId, $userId) {
   return json_decode($response);
 }
 ?>
+
 
 

@@ -1,13 +1,13 @@
 {
     "BusinessShortCode": "174379",
-    "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjUwNzE4MDAwOTMz",
-    "Timestamp": "20250718000933",
+    "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjUwNzE4MDAyOTEy",
+    "Timestamp": "20250718002912",
     "TransactionType": "CustomerPayBillOnline",
     "Amount": 4060,
-    "PartyA": "YOUR_REAL_MPESA_NUMBER_HERE",
+    "PartyA": "254722000000",
     "PartyB": "174379",
-    "PhoneNumber": "YOUR_REAL_MPESA_NUMBER_HERE",
+    "PhoneNumber": "254722000000",
     "CallBackURL": "https:\/\/551c0c008a5a.ngrok-free.app\/airtel-ecommerce\/mpesa_callback.php",
-    "AccountReference": "ORDER-16",
+    "AccountReference": "ORDER-17",
     "TransactionDesc": "Order Payment"
 }
